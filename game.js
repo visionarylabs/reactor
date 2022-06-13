@@ -1,5 +1,5 @@
 /**
-    STATE FOR TRIAL OF TIM EDITOR
+    STATE FOR REACTOR
     Editor Board State and Options
 **/
 // game setup options
