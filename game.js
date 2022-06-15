@@ -4,7 +4,7 @@
 **/
 // game setup options
 var options = {
-    tileSize : 50,
+    tileSize : 34,
     columns : 9,
     rows : 9,
     gameSpeed : 500,
@@ -13,6 +13,12 @@ var options = {
     renderStatic : false,
     tileActionColor : "rgba(255, 255, 255, 0)", //"rgba(255, 255, 255, 0.4)"
     tileHoverColor : "rgba(252, 251, 177, 0.25)" //"rgba(252, 251, 177, 0.5)"
+};
+
+var state = {
+    heat : 0,
+    energy : 0,
+    money : 0
 };
 
 /**
@@ -89,7 +95,12 @@ var gameFactory = function () {
         }
         
     }
-    
+
+    var processClick = function(click){
+        console.log('test');
+        return;
+    }
+
     var setUi = function (x,y,w,h,color,ox,oy,io){
         return{
             x : x,
@@ -105,6 +116,7 @@ var gameFactory = function () {
     return {
         getBox : getBox,
         setUi : setUi,
+        processClick : processClick
     }
 }
 //end gameFactory OBJ

@@ -30,9 +30,8 @@ var mouse = {x:0,y:0};
 //main toolkit vars
 var game = null;
 var box = null;
-var state = null;
-var rules = null;
-var dataUrl = null;
+var board = null;
+var ren = null;
 
 //interface / timer / canvas
 var curTime = 0;
@@ -70,7 +69,7 @@ var ogRender = function(){
 
     canvas.addEventListener('click', function(e) {
         click = getMousePos(canvas,e);
-        rules.processClick(click);
+        game.processClick(click);
     });
 
     function getMousePos(canvas,e) {
@@ -163,7 +162,14 @@ var ogRender = function(){
         ctx.textAlign = "left";
         ctx.textBaseline = "top";
         ctx.fillText("Time: " + curTime, 10, (options.rows * options.tileSize - options.tileSize) );
-        //ctx.fillText("Mouse: " + mouse.x + ", " + mouse.y, 300, 470);
+        
+        //vars
+        var gap = 20;
+        var ypos = 0;
+        ypos += gap;
+        ctx.fillText("Heat: " + state.heat, 10, ypos);         ypos += gap;
+        ctx.fillText("Energy: " + state.energy, 10, ypos);        ypos += gap;
+        ctx.fillText("Money: " + state.money, 10, ypos);        ypos += gap;
     }
 
     // The main game loop
@@ -186,9 +192,9 @@ var ogRender = function(){
     }
 }
 
-var gf = new gameFactory();
-var ren = new ogRender();
-var box = gf.getBox();
-var board = box.board;
+game = new gameFactory();
+ren = new ogRender();
+box = game.getBox();
+board = box.board;
 ren.init();
 ren.loop();
