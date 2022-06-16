@@ -81,7 +81,23 @@ var gameFactory = function () {
         
         return board;
     }
-    
+
+    var getTileIdFromClick = function (click) {
+        var tileNum = null;
+        var iTile = 0;
+        var loopLength = board.length;
+        for(iTile; iTile < loopLength; iTile++) {
+            if(
+                board[iTile].ui.x < mouse.x &&
+                board[iTile].ui.y < mouse.y &&
+                board[iTile].ui.x >= mouse.x - options.tileSize &&
+                board[iTile].ui.y >= mouse.y - options.tileSize
+            ) {
+                return iTile;
+            }
+        }
+    }
+
     /**
         box is the full data modal of all rules / monster tables decks etc
     **/
@@ -98,6 +114,8 @@ var gameFactory = function () {
 
     var processClick = function(click){
         console.log('test');
+        var tileId = getTileIdFromClick(click);
+        console.log( board[tileId] );
         return;
     }
 

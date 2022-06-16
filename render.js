@@ -58,6 +58,7 @@ var ogRender = function(){
     canvas.width = options.columns * options.tileSize;
     canvas.height = options.rows * options.tileSize;
     canvas.id = 'game-canvas';
+    canvas.onselectstart = function () { return false; } //stop text select on double click
 
     canvas.addEventListener('mousemove', function(e) {
         mouse = getMousePos(canvas,e);
